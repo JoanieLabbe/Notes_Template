@@ -1,0 +1,9 @@
+{
+  "build": { "dockerfile": "Dockerfile" },
+  "extensions": [
+    "davidanson.vscode-markdownlint",
+    "marp-team.marp-vscode",
+    "analytic-signal.preview-pdf",
+    "notzaki.pandocciter"
+  ]
+}

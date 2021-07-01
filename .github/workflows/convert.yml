@@ -1,0 +1,37 @@
+name: Convert to pdf with pandoc
+
+on: push
+
+jobs:
+  convert_via_pandoc:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: create file list
+        id: files_list
+        run: |
+          echo "Lorem ipsum" > lorem_1.md  # create two example files
+          echo "dolor sit amet" > lorem_2.md
+          mkdir output  # create output dir
+          # this will also include README.md
+          echo "::set-output name=files::$(printf '"%s" ' *.md)"
+
+      - name: Convert Eisvogel
+        id: convert_eisvogel
+        run: |
+          find ./eisvogel/ -name "*.md" | 
+          while read i; 
+          do 
+            pandoc "$i" \
+              -o "${i%.*}.pdf" \ 
+              --from markdown \
+              --listings \
+              --pdf-engine xelatex \ 
+              --template ./templates/eisvogel.tex; 
+          done
+          
+      - uses: actions/upload-artifact@master
+        with:
+          name: output
+          path: output

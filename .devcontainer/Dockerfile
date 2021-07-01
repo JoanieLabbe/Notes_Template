@@ -1,0 +1,1 @@
+FROM adurnaverden/latex_eisvogel:latest

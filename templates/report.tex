@@ -1,0 +1,120 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+
+% -----------------
+% START OF PREAMBLE
+% -----------------
+\documentclass[12pt,a4paper]{scrreprt}
+
+
+% Commands
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+
+% Packages
+\usepackage{fontspec}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{eurosym}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{upquote}
+\usepackage{microtype}
+\usepackage{polyglossia}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage[normalem]{ulem}
+\usepackage[setpagesize=false,
+            unicode=false,
+            colorlinks=true,
+            urlcolor=blue,
+            linkcolor=black]{hyperref}
+
+
+% Polyglossia settings
+\setmainlanguage{english} % or danish
+\addto\captionsenglish{%
+  \renewcommand{\contentsname}{Table of Contents}
+}
+\addto\captionsdanish{%
+  \renewcommand{\contentsname}{Indholdsfortegnelse}
+}
+
+
+% Required for syntax highlighting
+$highlighting-macros$
+
+
+% Don't let images overflow the page
+% Can still explicit set width/height/options for an image
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+
+% Make links footnotes instead of hotlinks
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+
+
+% Avoid problems with \sout in headers with hyperref:
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+
+
+% No paragraph indentation
+% and set space between paragraphs
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+
+% Change language of section name
+\renewcommand\lstlistingname{Quelltext}
+
+
+% -----------------
+%  END OF PREAMBLE
+% -----------------
+\begin{document}
+
+\begin{titlepage}
+  \begin{center}
+
+    \textsc{\LARGE University}\\[1.5cm]
+    \textsc{\Large Course Name}\\[0.5cm]
+
+    \HRule\\[0.4cm]
+    {\huge \bfseries Title of Report\\[0.4cm]}
+    \HRule\\[1.5cm]
+
+    \emph{Authors}\\[0.1cm]
+    \noindent\makebox[\textwidth]{%
+      \begin{tabular}{lr}%
+        Henry Terry & \texttt{hter@example.com}\\
+        Amy Shelton & \texttt{ashe@example.com}\\
+    \end{tabular}}\\[1cm]
+
+    \emph{Supervisor}
+    \noindent\makebox[\textwidth]{%
+      \begin{tabular}{lr}%
+        Lucas Watts & \texttt{lwat@example.com}\\
+    \end{tabular}}
+
+    \vfill
+
+    % Bottom of the page
+    % Probably replaced with date of deadline
+    {\large \today}
+
+  \end{center}
+\end{titlepage}
+
+% chapter: 0, section: 1, subsection: 2 etc
+\setcounter{secnumdepth}{1}
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+$body$
+
+\end{document}

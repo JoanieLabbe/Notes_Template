@@ -1,0 +1,25 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build with pandoc",
+      "type": "shell",
+      "command": "pandoc ${fileWorkspaceFolder}/${relativeFileDirname}/${fileBasename} -o ${fileWorkspaceFolder}/${relativeFileDirname}/${fileBasenameNoExtension}.pdf --from markdown --template ${workspaceFolder}/templates/${input:template}.tex --listings --pdf-engine xelatex"
+    }
+  ],
+  "inputs": [
+    {
+      "type": "pickString",
+      "id": "template",
+      "description": "Wanted template",
+      "options": [
+        "eisvogel",
+        "assignment",
+        "report"
+      ],
+      "default": "eisvogel"
+    }
+  ]
+}
