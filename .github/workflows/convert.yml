@@ -1,5 +1,5 @@
-name: Generate Word docs
-on: push
+name: Generate PDF
+on: workflow_dispatch
 
 jobs:
   convert_via_pandoc:
