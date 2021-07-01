@@ -16,14 +16,9 @@ jobs:
           done
       - name: convert md to pdf eisvogel
         run: |
-          find ./eisvogel/ -iname '*.md' -type f -exec sh -c 'pandoc ${0} -o output/${0%.md}.pdf --listings --pdf-engine xelatex --template ./templates/eisvogel.tex' {} \;
-      - name: convert md to pdf assignment
-        run: |
-          find ./assignment/ -iname '*.md' -type f -exec sh -c 'pandoc ${0} -o output/${0%.md}.pdf --listings --pdf-engine xelatex --template ./templates/assignment.tex' {} \;
-      - name: convert md to pdf report
-        run: |
-          find ./report/ -iname '*.md' -type f -exec sh -c 'pandoc ${0} -o output/${0%.md}.pdf --listings --pdf-engine xelatex --template ./templates/report.tex' {} \;
+          find . -iname '*.md' -type f -exec sh -c 'pandoc ${0} -o output/${0%.md}.pdf --listings --pdf-engine xelatex --template ./templates/eisvogel.tex' {} \;
       - uses: actions/upload-artifact@master
         with:
           name: output
           path: output
+          retention-days: 5
