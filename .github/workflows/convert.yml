@@ -16,7 +16,7 @@ jobs:
           done
       - name: convert md to docx
         run: |
-          find ./ -iname '*.md' -type f -exec sh -c 'pandoc ${0} -o output/${0%.md}.docx' {} \;
+          find ./ -iname '*.md' -type f -exec sh -c 'pandoc ${0} -o output/${0%.md}.pdf' --listings --pdf-engine xelatex --template ./templates/eisvogel.tex {} \;
       - uses: actions/upload-artifact@master
         with:
           name: output
